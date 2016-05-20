@@ -6,7 +6,7 @@ import React from 'react';
 
 import { Catcher } from 'meteor/marvin:imsi-catcher-catcher';
 
-class SIMReadingsPage extends React.Component {
+class NeighborReadingsPage extends React.Component {
   renderReading(reading) {
     return (
       <tr key={reading._id}>
@@ -17,10 +17,11 @@ class SIMReadingsPage extends React.Component {
         <td>{reading.commonReading.frequency}</td>
         <td>{moment(reading.commonReading.createdAt).format()}</td>
         <td>{moment(reading.commonReading.updatedAt).format()}</td>
-        <td>{reading.mcc}</td>
-        <td>{reading.mnc}</td>
-        <td>{reading.carrierName}</td>
-        <td>{reading.countryCode}</td>
+          <td>{reading.cid}</td>
+          <td>{reading.lac}</td>
+          <td>{reading.psc}</td>
+          <td>{reading.signalStrengthDBM}</td>
+          <td>{reading.networkType}</td>
       </tr>
     );
   }
@@ -39,10 +40,11 @@ class SIMReadingsPage extends React.Component {
               <th>Frequency</th>
               <th>Created At</th>
               <th>Updated At</th>
-              <th>MCC</th>
-              <th>MNC</th>
-              <th>Carrier Name</th>
-              <th>Country Code</th>
+              <th>CID</th>
+              <th>LAC</th>
+              <th>PSC</th>
+              <th>Signal Strength (dbm)</th>
+              <th>Network Type</th>
             </tr>
           </thead>
           <tbody>
@@ -60,7 +62,7 @@ class SIMReadingsPage extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <h1>SIM Readings Page</h1>
+        <h1>Neighbor Readings Page</h1>
         {this.renderReadings()}
       </div>
     )
@@ -68,12 +70,12 @@ class SIMReadingsPage extends React.Component {
 }
 
 export default createContainer( ({secret}) => {
-  const readingsHandle = Meteor.subscribe('catcher.secrets.sim-readings', secret);
+  const readingsHandle = Meteor.subscribe('catcher.secrets.neighbor-readings', secret);
   const ready = readingsHandle.ready();
-  const readings = Catcher.SIMReadings.find().fetch();
+  const readings = Catcher.NeighborReadings.find().fetch();
 
   return {
     ready: ready,
     readings: readings
   };
-}, SIMReadingsPage);
+}, NeighborReadingsPage);
