@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 
 import AdminApp from '../ui/AdminApp.jsx';
 import AdminPage from '../ui/pages/AdminPage.jsx';
+import DetectionsPage from '../ui/pages/DetectionsPage.jsx';
 import SIMReadingsPage from '../ui/pages/SIMReadingsPage.jsx';
 import TelephonyReadingsPage from '../ui/pages/TelephonyReadingsPage.jsx';
 import NeighborReadingsPage from '../ui/pages/NeighborReadingsPage.jsx';
@@ -12,7 +13,8 @@ export const ADMIN_PATHS = {
   HOME: "admin",
   SIM_READINGS: "sim-readings",
   TELEPHONY_READINGS: "telephony-readings",
-  NEIGHBOR_READINGS: "neighbor-readings"
+  NEIGHBOR_READINGS: "neighbor-readings",
+  DETECTIONS: "detections"
 }
 
 export function adminPathFor(endpoint) {
@@ -26,6 +28,7 @@ export function getAdminRoutes() {
       <Route path={ADMIN_PATHS.SIM_READINGS} component={SIMReadingsPage} />
       <Route path={ADMIN_PATHS.TELEPHONY_READINGS} component={TelephonyReadingsPage} />
       <Route path={ADMIN_PATHS.NEIGHBOR_READINGS} component={NeighborReadingsPage} />
+      <Route path={ADMIN_PATHS.DETECTIONS} component={DetectionsPage} />
     </Route>
   )
 }
