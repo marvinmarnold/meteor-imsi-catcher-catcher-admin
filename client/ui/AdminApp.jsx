@@ -1,5 +1,6 @@
 import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import { SECRET_SESSION_ID } from '../lib/secret.js';
 
 import Navbar from './components/Navbar.jsx';
 
@@ -17,7 +18,14 @@ class AdminApp extends React.Component {
 }
 
 export default createContainer((params) => {
-  const { secret } = params.location.query;
+  let { secret } = params.location.query;
+
+  if(secret) {
+    Session.set("SECRET_SESSION_ID", secret);
+  } else {
+    secret = Session.get("SECRET_SESSION_ID");
+  }
+
   return {
     secret: secret
   };

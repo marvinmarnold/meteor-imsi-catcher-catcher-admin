@@ -21,7 +21,7 @@ Npm.depends({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.3.2.4');
-  api.use(['ecmascript', 'check']);
+  api.use(['ecmascript', 'check', 'session']);
 
   // Community packages
   api.use([
