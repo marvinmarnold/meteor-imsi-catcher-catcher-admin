@@ -25,6 +25,11 @@ export default class Navbar extends React.Component {
               Neighbor Readings
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className='nav-link' to={adminPathFor(ADMIN_PATHS.DETECTIONS)}>
+              Detections
+            </Link>
+          </li>
         </ul>
       </nav>
     )
