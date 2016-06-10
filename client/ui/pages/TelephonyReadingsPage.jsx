@@ -79,7 +79,7 @@ class TelephonyReadingsPage extends React.Component {
 export default createContainer( ({secret}) => {
   const readingsHandle = Meteor.subscribe('catcher.secrets.telephony-readings', secret);
   const ready = readingsHandle.ready();
-  console.log(ready);
+
   const readings = Catcher.TelephonyReadings.find().fetch();
 
   return {
